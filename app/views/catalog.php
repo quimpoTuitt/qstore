@@ -30,6 +30,22 @@
 						</a>
 					<?php }	 ?>
 			</ul>
+
+			<!-- set a get request on click of the anchor tag -->
+			<h2>Sort</h2>
+			<ul class="list-group border">
+				<a href="../controllers/sort.php?sort=asc">
+					<li class="list-group-item">
+						Price(Lowest to Higest)
+					</li>
+				</a>
+
+				<a href="../controllers/sort.php?sort=desc">
+					<li class="list-group-item">
+						Price(Highest to Lowest)
+					</li>
+				</a>
+			</ul>
 	
 
 		</div> <!-- end categories -->
@@ -37,13 +53,19 @@
 		<!-- items -->
 		<div class="col-sm-10">
 			<div class="container">
-				
+
 				<?php 
 					$sql2 = "SELECT * FROM items";
 
 					// filter via category
 					if(isset($_GET['category_id'])) {
 						$sql2 .=" WHERE category_id =".$_GET['category_id'];
+					}
+
+					// display sorted items
+					if(isset($_SESSION['sort'])) {
+						// var_dump($_SESSION['sort']);
+						$sql2 .= $_SESSION['sort'];
 					}					
 
 					$items = mysqli_query($conn, $sql2);
