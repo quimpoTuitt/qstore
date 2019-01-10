@@ -2,7 +2,8 @@
 
 <?php function get_page_content() { ?>
 
-<?php require_once '../controllers/connect.php'; 
+<?php 
+	require_once '../controllers/connect.php'; 
 	global $conn; //refers to the $conn outside the function 
 ?>
 
@@ -11,6 +12,24 @@
 
 		<!-- categories -->
 		<div class="col-sm-2">
+			<!-- display categories -->
+			<h2>Categories</h2>
+			<ul class="list-group">
+				<a href="catalog.php">
+					<li class="list-group-item"> All </li>
+				</a>
+
+				<?php 
+					$sql = "SELECT * FROM categories";
+					$categories = mysqli_query($conn,$sql);
+					foreach ($categories as $category) { ?>
+						<a href="catalog.php?category_id=<?php echo $category['id'] ; ?>">
+							<li class="list-group-item">
+								<?php echo $category['name']; ?>
+							</li>
+						</a>
+					<?php }	 ?>
+			</ul>
 	
 
 		</div> <!-- end categories -->
@@ -18,8 +37,15 @@
 		<!-- items -->
 		<div class="col-sm-10">
 			<div class="container">
+				
 				<?php 
 					$sql2 = "SELECT * FROM items";
+
+					// filter via category
+					if(isset($_GET['category_id'])) {
+						$sql2 .=" WHERE category_id =".$_GET['category_id'];
+					}					
+
 					$items = mysqli_query($conn, $sql2);
 
 					echo "<div class='row'>";
