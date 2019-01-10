@@ -1,0 +1,15 @@
+<?php require_once '../partials/template.php'; ?>
+
+<?php function get_page_content() { ?>
+
+	<div class="container-fluid">
+		<div class="jumbotron bg-dark">
+
+			<h1>Qrner Store</h1>
+			<p>Your favorite Qrner Store</p>
+	
+		</div> <!-- end jumbo -->
+	</div> <!-- end container -->
+
+
+<?php } ?>
