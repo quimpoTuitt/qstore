@@ -29,11 +29,11 @@
 <body>
 	<?php 
 		require_once 'header.php';
-		// require_once '../controllers/connect.php';
+		require_once '../controllers/connect.php';
 
 		get_page_content();
 
-		// mysqli_close($conn);
+		mysqli_close($conn);
 
 		require_once 'footer.php';
 	 ?>
