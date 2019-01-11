@@ -17,6 +17,53 @@ $(document).ready( () => {
 			$('#username').next().html(' ');
 		}
 
+		//password should be atleast 8 characters
+		if(password.length < 8) {
+			$("#password").next().html("Please provide a stronger password");
+			errors++;
+		} else {
+			$("#password").next().html(' ');
+		}
+
+		//email should include the @ symbol
+		if(!email.includes("@")) {
+			$("#email").next().html("Please provide a valid email");
+			errors++;
+		} else {
+			$("#email").next().html(' ');
+		}
+
+		//address
+		if(!address != "") {
+			$("#address").next().html("Please provide a valid address");
+			errors++;
+		} else {
+			$("#address").next().html('');
+		}
+
+		// firstname
+		if(!firstname != "") {
+			$("#firstname").next().html("Please provide a valid first name");
+			errors++;
+		} else {
+			$("#firstname").next().html(' ');
+		}
+
+		// lastname
+		if(!lastname != "") {
+			$("#lastname").next().html("Please provide a valid last name");
+			errors++;
+		} else {
+			$("#lastname").next().html(' ');
+		}
+
+		//confirm password
+		if(password !== $("#confirm_password").val()) {
+			$("#confirm_password").next().html("Passwords should match");
+			errors++;
+		} else {
+			$("#confirm_password").next().html(' ');
+		}
 
 		if(errors > 0) {
 			return false; //this means there are errors
