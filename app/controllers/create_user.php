@@ -8,18 +8,19 @@
 	$email = $_POST['email'];
 	$address = $_POST['address'];
 
-	$sql_insert = "INSERT INTO users(username, password, firstname, lastname, email, address) VALUES ('$username', '$password', '$firstname', '$lastname', '$email', '$address'); ";
-	$result = mysqli_query($conn, $sql_insert);
+	// retrieve only the data under the username column that
+	// has the same value as the username variable
+	$sql = "SELECT * FROM users WHERE username = '$username' ";
+	$result = mysqli_query($conn, $sql);
 
-	if($result === TRUE) {
-		echo "success";
+	if(mysqli_num_rows($result) > 0) {
+		die("user_exists");
 	} else {
-		echo mysqli_error($conn);
+		$sql_insert = "INSERT INTO users(username, password, firstname, lastname, email, address) VALUES ('$username', '$password', '$firstname', '$lastname', '$email', '$address'); ";
+		$result = mysqli_query($conn, $sql_insert);		
 	}
 
 
-
-
-
+	mysqli_close($conn);
 
  ?>
