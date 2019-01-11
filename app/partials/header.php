@@ -14,7 +14,7 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="#"> Catalog </a>
+					<a class="nav-link" href="./catalog.php"> Catalog </a>
 				</li>
 
 				<li class="nav-item">
@@ -26,7 +26,7 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php"> Login </a>
+					<a class="nav-link" href="./login.php"> Login </a>
 				</li>
 				
 				<li class="nav-item">
