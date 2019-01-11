@@ -73,16 +73,6 @@ $(document).ready( () => {
 
 	}
 
-
-
-
-
-
-
-
-
-
-
 	$("#add_user").click( (e) => {
 		if(validate_registration_form()) {
 			let username = $("#username").val();
@@ -114,6 +104,29 @@ $(document).ready( () => {
 				}
 			});
 		}
+
+	});
+
+	//login and session
+	$("#login").click( (e) => {
+		let username = $("#username").val();
+		let password = $("#password").val();
+
+		$.ajax({
+			"url" : "../controllers/authenticate.php",
+			"method" : "POST",
+			"data": {
+				'username':username,
+				'password':password
+			},
+			"success":(data) => {
+				if(data == "login_failed") {
+					$("#username").next().html("Please provide correct credentials");
+				} else {
+					window.location.replace("../views/home.php");
+				}
+			}
+		});
 
 	});
 

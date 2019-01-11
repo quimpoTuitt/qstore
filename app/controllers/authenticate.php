@@ -6,7 +6,6 @@
 	$password = $_POST['password'];
 
 	$sql = "SELECT * FROM users WHERE username ='$username' ";
-
 	$result = mysqli_query($conn, $sql);
 	$user_info = mysqli_fetch_assoc($result);
 
@@ -16,6 +15,8 @@
 	} else {
 		$_SESSION['user'] = $user_info;
 	}
+	// var_dump($_SESSION['user']);
+
 	echo "login_success";
 	mysqli_close($conn);
  ?>

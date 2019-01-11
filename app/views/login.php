@@ -7,7 +7,7 @@
 			<h4>Login</h4>
 		</div> <!-- end jumbo -->
 
-		<form action="../controllers/authenticate.php" method="POST">
+		<form>
 			<div class="form-group">
 				<label for="username">Username:</label>
 				<input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
@@ -20,11 +20,11 @@
 				<span class="validation"></span>
 			</div>
 
+		</form>
 			<div class="text-center py-4">
 				<a href="./register.php" class="btn btn-secondary">Register</a>
-				<button type="submit" class="btn btn-primary" id="login">Login</button>
+				<button type="button" class="btn btn-primary" id="login">Login</button>
 			</div>
-		</form>
 	</div> <!-- end container -->
 
 <?php } ?>
