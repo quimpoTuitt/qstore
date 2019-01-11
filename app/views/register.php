@@ -8,7 +8,7 @@
 			<h4>Register</h4>
 		</div> <!-- end jumbo -->
 
-		<form action="../controllers/create_user.php" method="POST">
+		<form>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="form-group">
@@ -54,11 +54,15 @@
 						<input type="password" id="confirm_password" class="form-control" name="confirm_password" placeholder="Enter your confirm_password here">
 						<span class="validation"></span>
 					</div>	
-
-					<button type="submit" class="btn btn-primary">Register</button>
 				</div> <!-- end right side -->
 			</div> <!-- end row -->
 		</form> <!-- end form -->
+		
+		<div class="text-center py-4 mb-5">
+			<a href="./login.php" class="btn btn-secondary"> Login </a>
+			<button id="add_user" type="button" class="btn btn-primary">Register</button>
+		</div>
+
 
 	</div> <!-- end container -->
 
