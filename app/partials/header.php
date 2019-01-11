@@ -18,7 +18,7 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="#"> Cart <span class="badge bg-light text-dark" id="cart-count">0 </span> </a>
+					<a class="nav-link" href="#"> Cart <span class="badge bg-light text-dark" id="cart-count">0</span> </a>
 				</li>
 
 				<?php if(isset($_SESSION['user'])) { ?>

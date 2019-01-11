@@ -130,6 +130,40 @@ $(document).ready( () => {
 
 	});
 
+	//prep for add to cart
+
+	$(document).on('click', '.add-to-cart', (e) => {
+		//to prevent default behavior and to override it with our own
+		e.preventDefault();
+		//prevent parent elements to be triggered
+		e.stopPropagation();
+
+		// target is the one who triggered event
+		let item_id = $(e.target).attr("data-id");
+		let item_quantity = parseInt($(e.target).prev().val());
+
+		$.ajax({
+			"url" : "../controllers/update_cart.php",
+			"method" : "POST",
+			"data" : {
+				'item_id':item_id,
+				'item_quantity':item_quantity
+			},
+			"success" : (data) => {
+				$("#cart-count").html(data);
+			}
+		});
+
+
+	});
+
+
+
+
+
+
+
+
 
 
 
