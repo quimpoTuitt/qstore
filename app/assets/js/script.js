@@ -157,7 +157,7 @@ $(document).ready( () => {
 		});
 		function getTotal() {
 			let total = 0;
-			(".item_subtotal").each(function(e) {
+			$(".item_subtotal").each(function(e) {
 				total += parseFloat($(this).html());
 			});
 			$("#total_price").html(total.toFixed(2));
@@ -171,6 +171,8 @@ $(document).ready( () => {
 
 			subTotal = quantity * price;
 			$(e.target).parents('tr').find('.item_subtotal').html(subTotal.toFixed(2));
+
+			getTotal();
 
 			$.ajax({
 				"method": "POST",
