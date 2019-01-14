@@ -49,6 +49,39 @@
 				</div> <!-- end total price -->
 			</div> <!-- end row -->
 
+			<hr>
+			<button type="submit" class="btn btn-primary btn-block">Place Order Now</button>
+
+			<div class="row cart-items mt-4">
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered" id="cart-items">
+						<thead>
+							<tr class="text-center">
+								<th colspan="2"> Item Name</th>
+								<th>Item Price</th>
+								<th>Item Quantity</th>
+								<th>Item Subtotal</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<?php 
+							foreach ($_SESSION['cart'] as $id => $qty) {
+								$sql2 = "SELECT * FROM items WHERE id=$id;";
+								$result = mysqli_query($conn,$sql2);
+								// var_dump($result);
+								$item = mysqli_fetch_assoc($result);
+								// var_dump($item);
+							 ?>
+							<td class="text-center" colspan="2"><?php echo $item['name']; ?></td>
+							<td class="text-center"><?php echo $item['price']; ?></td>
+							<td class="text-center"><?php echo $qty; ?></td>
+							<td class="text-center"><?php echo $qty * $item['price']; ?></td>
+						<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div> <!-- end order summary row -->
 	 	</div> <!-- end container -->
 	 </form> <!-- end form -->
 
