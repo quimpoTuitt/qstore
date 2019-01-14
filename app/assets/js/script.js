@@ -119,6 +119,7 @@ $(document).ready( () => {
 				'username':username,
 				'password':password
 			},
+
 			"success":(data) => {
 				if(data == "login_failed") {
 					$("#username").next().html("Please provide correct credentials");
@@ -205,6 +206,9 @@ $(document).ready( () => {
 			"data": {
 				'item_id':item_id,
 				'item_quantity':0
+			},
+			"beforeSend": () => {
+				return confirm("Are you sure you want to delete?");
 			},
 			"success": (data) => {
 				$(e.target).parents('tr').remove();
