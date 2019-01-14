@@ -19,6 +19,7 @@ session_start();
 			$_SESSION['cart'][$item_id] = $item_quantity;
 		}
 	}
+	
 	// $_SESSION['cart'][$item_id] = $item_quantity;
 
 	echo getCartCount();
