@@ -77,16 +77,13 @@
 							<td class="text-center"><?php echo $item['price']; ?></td>
 							<td class="text-center"><?php echo $qty; ?></td>
 							<td class="text-center"><?php echo $qty * $item['price']; ?></td>
-						<?php } ?>
 						</tbody>
+						<?php } ?>
 					</table>
 				</div>
 			</div> <!-- end order summary row -->
 	 	</div> <!-- end container -->
 	 </form> <!-- end form -->
-
-
-
 
 
 <?php } ?>
