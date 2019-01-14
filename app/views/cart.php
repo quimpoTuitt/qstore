@@ -41,12 +41,12 @@
 								$cart_total += $subTotal;
 					 ?>		
 						<tr>
-							<td class="item_name"> <?php echo $item['name']; ?></td>
-							<td class="item_price"> <?php echo $item['price']; ?></td>
+							<td class="item_name text-center"> <?php echo $item['name']; ?></td>
+							<td class="item_price text-center"> <?php echo $item['price']; ?></td>
 							<td class="item_quantity"> 
-								<input type="number" value="<?php echo $qty; ?>" class="form-control" data-id="<?php echo $id; ?>" min="1" >
+								<input type="number" value="<?php echo $qty; ?>" class="form-control text-right" data-id="<?php echo $id; ?>" min="1" >
 							</td>
-							<td class="item_subtotal"> <?php echo $subTotal; ?></td>
+							<td class="item_subtotal text-center"> <?php echo $subTotal; ?></td>
 							<td class="item_action text-center">
 								<button class="btn btn-danger item-remove">Remove from cart</button>
 							</td>
