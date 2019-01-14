@@ -1,6 +1,8 @@
 <?php require_once '../partials/template.php'; ?>
 
-<?php function get_page_content() { ?>
+<?php function get_page_content() { 
+	global $conn;
+	?>
 	<div class="container my-4">
 		<div class="row">
 			<div class="col-12">
@@ -22,35 +24,55 @@
 				</thead>
 
 				<tbody>
+
 					<?php 
 
+					// var_dump($_SESSION['cart']);
+
 						if(isset($_SESSION['cart']) && count($_SESSION['cart']) !=0) {
-							// echo 'may laman ang cart';
-						} else {
-							echo 'No items in the cart';
-						}
+
+							$cart_total = 0;
+							foreach ($_SESSION['cart'] as $id => $qty) {
+								$sql = "SELECT * FROM items WHERE id ='$id' ";
+
+								$result = mysqli_query($conn, $sql);
+								$item = mysqli_fetch_assoc($result);
+								$subTotal = $_SESSION['cart'][$id] * $item['price'];
+								$cart_total += $subTotal;
 					 ?>		
 						<tr>
-							<td class="item_name"> Item Name</td>
-							<td class="item_price"> Item Price</td>
-							<td class="item_quantity"> Item Quantity</td>
-							<td class="item_subtotal"> Item Subtotal</td>
+							<td class="item_name"> <?php echo $item['name']; ?></td>
+							<td class="item_price"> <?php echo $item['price']; ?></td>
+							<td class="item_quantity"> 
+								<input type="number" value="<?php echo $qty; ?>" class="form-control" data-id="<?php echo $id; ?>" min="1" >
+							</td>
+							<td class="item_subtotal"> <?php echo $subTotal; ?></td>
 							<td class="item_action text-center">
 								<button class="btn btn-danger item-remove">Remove from cart</button>
 							</td>
 						</tr>
+					<?php } ?>
 				</tbody>
-
 				<tfoot>
 					<tr>
 						<td class="text-right font-weight-bold" colspan="4">Total</td>
-						<td class="text-right font-weight-bold" id="total_price">Total Price</td>
+						<td class="text-right font-weight-bold" id="total_price">
+							<?php echo $cart_total; ?>
+						</td>
 					</tr>
 				</tfoot>
+				
+				<?php 
+					} else {
+						echo '<tr>
+								<td class="text-center" colspan="6"> No items in the cart </td>
+							  </tr>
+						';
+					}
+
+				 ?>
 			</table>
 		</div>		
-
-
 	</div> <!-- end contianer -->
 
 
