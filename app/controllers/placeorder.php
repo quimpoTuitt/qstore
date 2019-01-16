@@ -44,8 +44,9 @@ function generate_new_transaction_number() {
 		//loop throught the items inside session cart
 		foreach($_SESSION['cart'] as $item_id => $qty) {
 			//get the price of the current item
-			$sql = "SELECT price FROM items WHERE id ='$item_id'";
+			$sql = "SELECT price FROM items WHERE id ='$item_id' ";
 			$result = mysqli_query($conn,$sql);
+			// var_dump($sql);
 
 			//fetch the data from the query
 			$item = mysqli_fetch_assoc($result);
@@ -109,8 +110,6 @@ try {
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
-
-
 
 
 	mysqli_close($conn);
