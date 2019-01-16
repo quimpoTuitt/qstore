@@ -39,13 +39,10 @@
 					<label for="image">Image:</label>
 					<input type="file" id="image" class="form-control" name="image" required>
 				</div>
-				<button type="submit" class="btn btn-block-primary">Add New Item</button>
+				<button type="submit" class="btn btn-block btn-primary">Add New Item</button>
 			</form> <!-- end form -->
 		</div> <!-- end 8 cols -->
 	</div> <!-- end row -->
 </div> <!-- end container -->
-
-
-
 
 <?php } ?>
