@@ -76,6 +76,7 @@ require '../../vendor/autoload.php';
 $mail = new PHPMailer(true); 
 // Passing `true` enables exceptions
 
+
 $staff_email = 'qstorephils@gmail.com';
 $customer_email = $_SESSION['user']['email'];          //
 $subject = 'Qstore Phils - Order Confirmation';
@@ -102,7 +103,7 @@ try {
 
     // Route user to confirmation page
     $_SESSION['new_txn_number'] = $transaction_number;
-    // header('location: ../views/confirmation.php');
+    header('location: ../views/confirmation.php');
 
     $mail->send();
     // echo 'Message has been sent';
