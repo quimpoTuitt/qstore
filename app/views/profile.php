@@ -22,12 +22,12 @@
 			<div class="col-lg-7">
 				<div class="tab-content">
 					<div class="tab-pane" id="profile" role="tabpanel">
-						
+
 						<h3>User Information</h3>
 
 						<form id="update_user_details" action="../controllers/update_profile.php" method="POST">
 							<div class="container">
-								<input type="text" class="form-control" name="user_id" value="<?php echo $user['id']; ?>" hidden>
+								<input type="hidden" class="form-control" name="user_id" value="<?php echo $user['id']; ?>">
 								<label for="username">Username:</label>
 								<input type="text" class="form-control" id="username" name="username" value="<?php echo $user['username']; ?>" disabled>
 								<span class="validation"></span><br>
@@ -70,17 +70,17 @@
 									//retrieve trasaction code
 									//retrieve purchase date
 									//retrive payment mode
+									$sql = "SELECT o.transaction_code, o.purchase_date, s.name AS status, p.name AS payment_mode FROM orders o JOIN statuses s ON (o.status_id = s.id) JOIN payment_modes p ON (o.payment_mode_id = p.id) WHERE user_id = ". $user['id'];
 
-
-                                        // $transactions = mysqli_query($conn, $sql);
-                                        // foreach($transactions as $transaction) { ?>
+                                        $transactions = mysqli_query($conn, $sql);
+                                        foreach($transactions as $transaction) { ?>
                                           	<tr>
-                                          		<td>transaction code</td>
+                                          		<td><?php echo $transaction['transaction_code'] ?></td>
                                           		<td>purchase date</td>
                                           		<td>status</td>
                                           		<td>payment mode</td>
                                           	</tr>
-                                        <?//php  }  
+                                        <?php  }  
 									?>
 								</tbody>
 							</table>
