@@ -2,7 +2,11 @@
 <?php function get_page_content(){
 	global $conn;
  ?>
-<?php $user = $_SESSION['user']; ?>
+<?php $user = $_SESSION['user'];
+	
+	// var_dump($user);
+
+ ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
@@ -18,24 +22,26 @@
 			<div class="col-lg-7">
 				<div class="tab-content">
 					<div class="tab-pane" id="profile" role="tabpanel">
+						
 						<h3>User Information</h3>
+
 						<form id="update_user_details" action="../controllers/update_profile.php" method="POST">
 							<div class="container">
-								<input type="text" class="form-control" name="user_id" value="input the id of the current user" hidden>
+								<input type="text" class="form-control" name="user_id" value="<?php echo $user['id']; ?>" hidden>
 								<label for="username">Username:</label>
-								<input type="text" class="form-control" id="username" name="username" value="input the username of the current user" disabled>
+								<input type="text" class="form-control" id="username" name="username" value="<?php echo $user['username']; ?>" disabled>
 								<span class="validation"></span><br>
 								<label for="firstname">First Name</label>
-								<input type="text" class="form-control" id="firstname" name="firstname" value="input the firstname of the current user">
+								<input type="text" class="form-control" id="firstname" name="firstname" value="<?php echo $user['firstname']; ?>">
 								<span class="validation"></span><br>
 								<label for="lastname">Last Name</label>
-								<input type="text" class="form-control" id="lastname" name="lastname" value="input the lastname of the current user">
+								<input type="text" class="form-control" id="lastname" name="lastname" value="<?php echo $user['lastname']; ?>">
 								<span class="validation"></span><br>
 								<label for="email">E-mail Address</label>
-								<input type="text" class="form-control" id="email" name="email" value="input the email of the current user">
+								<input type="text" class="form-control" id="email" name="email" value="<?php echo $user['email']; ?>">
 								<span class="validation"></span><br>
 								<label for="address">Address</label>
-								<input type="text" class="form-control" id="address" name="address" value="input the address of the current user">
+								<input type="text" class="form-control" id="address" name="address" value="<?php echo $user['address']; ?>">
 								<span class="validation"></span><br>
 								<br>
 								<button type="button" class="btn btn-primary mb-5" id="update_info">Update Info</button>
