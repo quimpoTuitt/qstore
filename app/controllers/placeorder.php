@@ -13,6 +13,8 @@ function generate_new_transaction_number() {
 
 		//append random character
 		$ref_number .= $source[$index];
+		// var_dump($index);
+
 	}
 
 	$today = getdate();
@@ -57,13 +59,56 @@ function generate_new_transaction_number() {
 		}
 	}
 
-	//clear items from cart
-	$_SESSION['cart'] = [];
+//clear items from cart
+$_SESSION['cart'] = [];
 
+// Send email notification to customer
+// ==============================================================================
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-	$_SESSION['new_txn_number'] = $transaction_number;
+//Load Composer's autoloader
+require '../../vendor/autoload.php';
 
-	header('Location: ../views/confirmation.php');
+$mail = new PHPMailer(true); 
+// Passing `true` enables exceptions
+
+$staff_email = 'qstorephils@gmail.com';
+$customer_email = $_SESSION['user']['email'];          //
+$subject = 'Qstore Phils - Order Confirmation';
+$body = '<div style="text-transform:uppercase;"><h3>Reference No.: '.$transaction_number.'</h3></div>'."<div>Ship to $address</div>";
+try {
+    //Server settings
+    $mail->SMTPDebug = 4;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $staff_email;                       // SMTP username
+    $mail->Password = 'secretsecret';                     // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+
+    //Recipients
+    $mail->setFrom($staff_email, 'Qstore');
+    $mail->addAddress($customer_email);  // Name is optional
+
+    //Content
+    $mail->isHTML(true);  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+
+    // Route user to confirmation page
+    $_SESSION['new_txn_number'] = $transaction_number;
+    // header('location: ../views/confirmation.php');
+
+    $mail->send();
+    // echo 'Message has been sent';
+
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
 
 
 
