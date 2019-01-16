@@ -63,8 +63,7 @@ function generate_new_transaction_number() {
 
 	$_SESSION['new_txn_number'] = $transaction_number;
 
-	var_export($_SESSION['new_txn_number']);
-
+	header('Location: ../views/confirmation.php');
 
 
 
