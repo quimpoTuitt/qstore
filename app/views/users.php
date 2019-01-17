@@ -10,13 +10,13 @@ global $conn;
 	<div class="container">
 		<h4 class="text-center">User Admin Page</h4>
 		<div class="row">
-			<div class="col-sm-8 offset-sm-2">
+			<div class="col-sm-10 offset-sm-1">
 				<table class="table table-responsive table-striped">
 					<thead>
 						<tr class="text-center">
 							<th>Username</th>
-							<th>First Name</th>
-							<th>Last Name</th>
+							<th colspan="2">First Name</th>
+							<th colspan="2">Last Name</th>
 							<th>Email</th>
 							<th>Role</th>
 							<th>Actions</th>
@@ -31,12 +31,22 @@ global $conn;
 						 ?>
 						 <tr>
 						 	<td><?php echo $indiv_user['username']; ?></td>
-						 	<td><?php echo $indiv_user['firstname']; ?></td>
-						 	<td><?php echo $indiv_user['lastname']; ?></td>
+						 	<td colspan="2"><?php echo $indiv_user['firstname']; ?></td>
+						 	<td colspan="2"><?php echo $indiv_user['lastname']; ?></td>
 						 	<td><?php echo $indiv_user['email']; ?></td>
 						 	<td><?php echo $indiv_user['role']; ?></td>
+						 	<td>
+						 		<?php 
+						 		$id = $indiv_user['id'];
+						 		if($indiv_user['role'] =="admin"){
+						 			echo "<a href='../controllers/grant_admin.php?id=$id' class='btn btn-danger'> Revoke Admin </a>";
+						 		}  else {
+					 				echo "<a href='../controllers/grant_admin.php?id=$id' class='btn btn-primary'> Make Admin </a>";
+						 		}
+						 		 ?>
+						 	</td>
 						 </tr>
-<?php }; ?>
+						<?php }; ?>
 					</tbody>
 				</table>
 
