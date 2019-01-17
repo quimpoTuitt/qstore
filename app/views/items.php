@@ -31,8 +31,8 @@
 					</div> <!-- end card body -->
 
 					<div class="card-footer">
-						<a href="./edit_item.php?id=item id" class="btn btn-primary"> Edit Item</a>
-						<a href="./delete_item.php?id=item id" class="btn btn-danger"> Delete Item</a>
+						<a href="./edit_item.php?id=<?php echo $item['id']; ?>" class="btn btn-primary"> Edit Item</a>
+						<a href="../controllers/delete_item.php?id=<?php echo $item['id']; ?>" class="btn btn-danger"> Delete Item</a>
 					</div>
 
 				</div>
