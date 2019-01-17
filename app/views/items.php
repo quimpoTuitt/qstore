@@ -12,18 +12,22 @@
 		<?php 
 		$sql = "SELECT * FROM items";
 		$items = mysqli_query($conn, $sql);
-		
+
 		echo "<div class='row'>";
-		foreach ($items as $item) { ?>
+		foreach ($items as $item) {
+
+			// var_dump($item);
+
+		 ?>
 			<div class="col-sm-3 py-2">
 				<div class="card h-100">
-					<img src="image of the item" class="card-img-top">
+					<img src="<?php echo $item['image_path']; ?>" class="card-img-top">
 					<div class="card-body">
-						<h4 class="card-title"> item name </h4>
-						<p class="card-text">item description</p>
-						<p class="card-text"> Price: item price</p>
+						<h4 class="card-title"> <?php echo $item['name']; ?></h4>
+						<p class="card-text"><?php echo $item['description']; ?></p>
+						<p class="card-text"> Price: <?php echo $item['price']; ?></p>
 
-						<input type="hidden" value="id of the item">
+						<input type="hidden" value="<?php echo $item['id']; ?>">
 					</div> <!-- end card body -->
 
 					<div class="card-footer">
