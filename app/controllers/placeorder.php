@@ -169,8 +169,8 @@ function generate_new_transaction_number() {
 
     //===============================================
     //make sure to input correct path
-        ->setReturnUrl('http://localhost/qstore/app/controllers/pay.php?success=true')
-        ->setCancelUrl('http://localhost/qstore/app/controllers/pay.php?success=false');
+        ->setReturnUrl('https://qstoreph.herokuapp.com/app/controllers/pay.php?success=true')
+        ->setCancelUrl('https://qstoreph.herokuapp.com/app/controllers/pay.php?success=false');
         //===========================================
 
     $payment = new Payment();
