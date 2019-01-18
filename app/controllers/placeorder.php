@@ -25,7 +25,7 @@ function generate_new_transaction_number() {
 	$user_id = $_SESSION['user']['id'];
 	$purchase_date = date("Y-m-d G:i:s"); //G is for 12 hour format, i minutes with leading zeros, s seconds with leading zeros
 	$status_id = 1;
-	$payment_mode_id = 1;
+	$payment_mode_id = $_POST['payment_mode'];
 	$address = $_POST['addressLine1'];
 	$transaction_number = generate_new_transaction_number();
 

@@ -1,9 +1,9 @@
 <?php 
 
 $host = 'db4free.net';
-$username = '';
-$password = '';
-$dbname = '';
+$username = 'qstorephils';
+$password = 'passwordko';
+$dbname = 'qstore_db';
 
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
