@@ -166,8 +166,12 @@ function generate_new_transaction_number() {
 
     $redirectUrls = new RedirectUrls();
     $redirectUrls
-        ->setReturnUrl('http://localhost:3306/controllers/pay.php?success=true')
-        ->setCancelUrl('http://localhost:3306/controllers/pay.php?success=false');
+
+    //===============================================
+    //make sure to input correct path
+        ->setReturnUrl('http://localhost/qstore/app/controllers/pay.php?success=true')
+        ->setCancelUrl('http://localhost/qstore/app/controllers/pay.php?success=false');
+        //===========================================
 
     $payment = new Payment();
     $payment->setIntent('sale')
