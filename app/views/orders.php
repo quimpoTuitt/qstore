@@ -24,8 +24,14 @@
 								// var_dump($order);
 						 ?>
 						 <tr>
-						 	<td>order transaction code</td>
-						 	<td>order status</td>
+						 	<td><?php echo $order['transaction_code']; ?></td>
+						 	<td><?php echo $order['status']; ?></td>
+						 	<td>
+						 		<?php if($order['status']=="pending") { ?>
+						 			<a href="../controllers/complete_order.php?id=<?php echo $order['id']; ?>" class="btn btn-success">Complete Order</a>
+						 			<a href="../controllers/cancel_order.php?id=<?php echo $order['id']; ?>" class="btn btn-danger">Cancel Order</a>
+						 		<?php }; ?>
+						 	</td>
 						 </tr>
 						<?php } ?>
 					</tbody>
