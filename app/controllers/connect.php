@@ -1,9 +1,9 @@
 <?php 
 
-$host = 'localhost';
-$username = 'root';
+$host = 'db4free.net';
+$username = '';
 $password = '';
-$dbname = 'ecom_db';
+$dbname = '';
 
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
